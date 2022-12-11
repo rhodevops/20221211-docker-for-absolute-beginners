@@ -1,4 +1,6 @@
+# ejecutables sh y archivos pdf
 *.sh
 *.pdf
+tex2pdf.*
 # Ignorar carpetas temporales
 tmp.*
