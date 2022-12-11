@@ -1,0 +1,21 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {section}{\numberline {2}Comandos para levantar contenedores}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Descargar una imagen}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Levantar un contenedor}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Flag –rm}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Utilizando variables de entorno}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Exposición de puertos}{3}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Orquestar contenedores con docker compose}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Comandos para levantar contenedores con docker-compose}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Comandos para gestionar contenedores}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Comandos para manejar imagenes}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Comandos para manejar contenedores}{4}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Comandos de redes}{4}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Comandos para manejar volúmenes}{5}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Construcción de imágenes con Dockerfile}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Comando para construir una imagen con un Dockerfile}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Instrucciones para esccribir un Dockerfile}{5}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Instrucciones básicas}{5}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Ejecución de comandos y punto de entrada}{6}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Configurar entrypont del contenedor}{6}{subsubsection.4.2.3}%

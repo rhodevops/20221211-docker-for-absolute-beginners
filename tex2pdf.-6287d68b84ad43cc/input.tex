@@ -1,0 +1,1550 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Docker for absolute beginners},
+  pdfauthor={Roberto Negro},
+  pdflang={es-ES},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={URLCOLOR1},
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{250,250,210}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.61,0.61,0.61}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definición de colores para usar en el
+%% metadata.yaml y en este documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{INLINECODECOLOR1}{HTML}{BDDBE2 } %azul gris
+\definecolor{URLCOLOR1}{HTML}{CD5C5C} %rojo salmon
+\definecolor{TOCCOLOR1}{HTML}{29282A}
+\definecolor{TOCCOLOR2}{HTML}{FF4500} %rojo naranja
+\definecolor{INLINECODECOLOR2}{HTML}{FFE4B5} %amarillo Moccasin
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Resaltado del código en linea
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[most]{tcolorbox}
+
+%%\colorlet{LightLavender}{Lavender!40!}
+\tcbset{on line, 
+        boxsep=0pt, left=0.7pt,right=0pt,top=0pt,bottom=0pt,
+        colframe=white,colback=INLINECODECOLOR1,  
+        highlight math style={enhanced}
+        }
+
+% Guardamos la definición original para que nuestra definición no sea recursiva
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{
+    \tcbox{\oldtexttt{#1}} 
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Para generar texto de prueba
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Configuración para que las líneas
+%% de bloques de código se corten y 
+%% no ocupen el margen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Docker for absolute beginners}
+\author{Roberto Negro}
+\date{11 de diciembre de 2022}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=TOCCOLOR2}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{introducciuxf3n}{%
+\section{Introducción}\label{introducciuxf3n}}
+
+Una \texttt{imagen\ de\ contenedor} (imagen docker) representa los datos
+binarios que encapsulan una aplicación y todas sus dependencia de
+software. Las imágenes de contenedor son paquetes de sofware ejecutable
+(executable software bundles) que se pueden ejecutar de manera
+independiente (run standalone) y que hace suposiciones muy bien
+definidas sobre el entorno de ejecución.
+
+Un \texttt{contenedor} es una instancia en ejecución de una imagen. Es
+importante tener claro su carácter efímero. Están hechos para poder ser
+destruídos y volver a levantar una réplica procedentes de la misma
+imagen. Los cambios realizados en un contenedor, por defecto, no
+persisten. Es decir, si se elimina y se levanta una replica, se pierden
+los cambios. Se pueden montar \texttt{volúmenes} para persistir datos
+y/o compartir datos entre contenedores.
+
+\texttt{Docker} es una tecnología que permite gestionar (crear, iniciar,
+detener, eliminar) contenedores. \texttt{Docker\ Hub} es el registro de
+imágenes de la empresa \texttt{Docker}
+
+Simplicando mucho, podemos ver un contenedor como una pequeña máquina
+virtual. Los contenedores se utilizan por varias razones, algunas son
+estandarización, portabilidad, aislamiento y rapidez para desplegar
+aplicaciones.
+
+Un \texttt{Dockerfile} es un archivo de configuración que sirve para
+construir una imagen a partir de otra imagen base.
+
+\texttt{Dockercompose} es un sistema de orquestación de contenedores muy
+simple y que no se usa en producción. Utiliza un fichero llamado
+\texttt{docker-compose.yml} que puede utilizarse (o no) junto a un
+Dockerfile.
+
+\texttt{Kubernetes} es el sistema de orquestación más utilizado en
+producción en 2022. Utiliza \texttt{pods} como unidad mínima de
+despliegue. Un pod es un set de contenedores, el principal y otros de
+soporte. Típicamente, se crea una imagen de contenedor para una
+aplicación y se sube a un registro (en producción no se utiliza Docker
+Hub, sino \texttt{Nexux} o \texttt{Harbor} entre otros) antes de
+referenciar la imagen para que la utilice un Pod.
+
+Las \texttt{redes} constituyen un elemento muy importante tanto en
+Docker como en Kubernetes. La red por defecto emnm Docker es
+\texttt{bridge}.
+
+\hypertarget{comandos-para-levantar-contenedores}{%
+\section{Comandos para levantar
+contenedores}\label{comandos-para-levantar-contenedores}}
+
+\hypertarget{descargar-una-imagen}{%
+\subsection{Descargar una imagen}\label{descargar-una-imagen}}
+
+Para descargar una imagen (almacenada en DockerHub)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ pull [OPTIONS] NAME[:TAG}\KeywordTok{|}\ExtensionTok{@DIGEST]}
+\ExtensionTok{docker}\NormalTok{ pull }\OperatorTok{\textless{}}\NormalTok{image name}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+utilizará \texttt{latest} si no se especifica el tag.
+
+\hypertarget{levantar-un-contenedor}{%
+\subsection{Levantar un contenedor}\label{levantar-un-contenedor}}
+
+Para levantar un contenedor a partir de una imagen (la descarga de
+DockerHub si no existe)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run [OPTIONS] IMAGE[:TAG}\KeywordTok{|}\ExtensionTok{@DIGEST]}\NormalTok{ [COMMAND] [ARG...]}
+\ExtensionTok{docker}\NormalTok{ run }\AttributeTok{{-}d} \AttributeTok{{-}{-}name} \OperatorTok{\textless{}}\NormalTok{set container name}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{image name}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+donde \texttt{-d} indica modo \texttt{detached} true, es decir, el
+contenedor se ejecute en segundo plano (\texttt{background})
+
+Por defecto, si no se indica \texttt{-d}, se ejecuta en modo
+\texttt{foreground}. En este caso, docker run inicia el proceso en el
+contenedor y fija (attach) la consola a los procesos STDIN, STDOUT,
+STDERR.
+
+Por defecto fija STDIN y STDOUT, pero se puede configurar:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{-a={[}{]}} fija STDIN, STDOUT y/o STDERR, por ejemplo
+  \texttt{-a\ stdout}
+\item
+  \texttt{-t} asigna (allocate) una \texttt{pseudo-tty}
+\item
+  \texttt{-i} mantine STDIN abierto aunque no se fije
+\end{itemize}
+
+Para procesos iteractivos, como una shell, se deben utiliza juntos
+\texttt{-i\ -t} con el objetivo de asignar una \texttt{tty} para el
+proceso del contenedor
+
+\begin{itemize}
+\tightlist
+\item
+  se suele escribir junto \texttt{-it}
+\end{itemize}
+
+Ejemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run }\AttributeTok{{-}it} \AttributeTok{{-}{-}name}\NormalTok{ test busybox sh}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{flag-rm}{%
+\subsection{Flag –rm}\label{flag-rm}}
+
+El flag \texttt{-\/-rm} sirve para eliminar el filesystem que por
+defecto persiste después de su muerte (volumen anónimo). Ayuda a no
+sobrecargar el disco después de ejecutar contenedores de vida corta.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run }\AttributeTok{{-}{-}rm} \AttributeTok{{-}it}\NormalTok{ python:3 python}
+\end{Highlighting}
+\end{Shaded}
+
+Los volúmenes anónimos se guardan normalmente en algún lugar de
+\texttt{/var/lib/docker}, comprobarlo con
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ inspect }\AttributeTok{{-}{-}type}\NormalTok{ container }\AttributeTok{{-}f} \StringTok{\textquotesingle{}\{\{range $i, $v := .Mounts \}\}\{\{printf "\%v\textbackslash{}n" $v\}\}\{\{end\}\}\textquotesingle{}} \OperatorTok{\textless{}}\NormalTok{container name}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{utilizando-variables-de-entorno}{%
+\subsection{Utilizando variables de
+entorno}\label{utilizando-variables-de-entorno}}
+
+Flag de \texttt{docker\ run} para introducir variables de entorno
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{-e\ "\textless{}env=value\textgreater{}"}
+\end{itemize}
+
+\hypertarget{exposiciuxf3n-de-puertos}{%
+\subsection{Exposición de puertos}\label{exposiciuxf3n-de-puertos}}
+
+Flag de \texttt{docker\ run} para abrir y mapear puertos
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{-p\ \textless{}hostPort\textgreater{}:\textless{}containerPort\textgreater{}}
+  expone un puerto del contenedor al host (mapeo)
+\end{itemize}
+
+El puerto expuesto es accesible en el host y los puertos están
+disponibles para cualquier cliente que pueda llegar al host.
+
+Formato para la exposición de puertos - EXPOSE (incoming ports)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort}
+\end{Highlighting}
+\end{Shaded}
+
+**NOTA.* El número de puerto dentro del contenedor (donde el servicio
+escucha) no necesariamente coincide (match) con el número de puerto
+expuesto fuera del contenedor (donde el cliente conecta). Por ejemplo,
+en el contenedor un servicio HTTP esta escuchando en el puerto 80
+(\texttt{EXPOSE\ 80} en el Dockerfile). En tiempo de ejecución, el
+puerto podría vincularse (bound) con el puerto 42800 en el host.
+
+Se pueden listar los mapes de los puertos del host y los puertos
+expuestos con la orden
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ port CONTAINER [PRIVATE\_PORT[/PROTO]]}
+\ExtensionTok{docker}\NormalTok{ port }\OperatorTok{\textless{}}\NormalTok{container name}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{orquestar-contenedores-con-docker-compose}{%
+\section{Orquestar contenedores con docker
+compose}\label{orquestar-contenedores-con-docker-compose}}
+
+\hypertarget{comandos-para-levantar-contenedores-con-docker-compose}{%
+\subsection{Comandos para levantar contenedores con
+docker-compose}\label{comandos-para-levantar-contenedores-con-docker-compose}}
+
+Se ejecuta desde la carpeta que contiene el \texttt{docker-compose.yml}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker{-}compose}\NormalTok{ up }\AttributeTok{{-}d}
+\end{Highlighting}
+\end{Shaded}
+
+donde \texttt{-d} es para que el contenedor se ejecute en segundo plano.
+
+El archivo \texttt{docker-compose.yml} puede hacer referencia a un
+Dockerfile o descargar la imagen de un almacen remoto.
+
+\hypertarget{comandos-para-gestionar-contenedores}{%
+\subsection{Comandos para gestionar
+contenedores}\label{comandos-para-gestionar-contenedores}}
+
+\hypertarget{comandos-para-manejar-imagenes}{%
+\subsection{Comandos para manejar
+imagenes}\label{comandos-para-manejar-imagenes}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{docker\ images} lista las imágenes
+\item
+  \texttt{docker\ rmi\ \textless{}imagen\textgreater{}} elimina una
+  imagen
+\item
+  \texttt{docker\ system\ prune} elimina imágenes, contenedores,
+  volúmenes y dispositivos de red, que no estén asociadas a ningún
+  contenedor
+\item
+  \texttt{docker\ system\ prune\ -a} elimina todos los contenedores
+  parados y todas las imágenes que no se están usando en ese momento
+\end{itemize}
+
+\hypertarget{comandos-para-manejar-contenedores}{%
+\subsection{Comandos para manejar
+contenedores}\label{comandos-para-manejar-contenedores}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{docker\ ps\ -a} lista los contenedores que tengo
+\item
+  \texttt{docker\ ps\ -a\ -q} lista los ids de los contenedores que
+  tengo
+\item
+  \texttt{docker\ ps} lista los contenedores que están corriendo
+\item
+  \texttt{docker\ ps\ -q} lista los ids de los contenedores que están
+  corriendo
+\item
+  \texttt{docker\ inspect\ \textless{}container\textgreater{}} da
+  información sobre el contenedor
+\item
+  \texttt{docker\ start\ \textless{}container\textgreater{}} arranca un
+  contenedor
+\item
+  \texttt{docker\ stop\ \textless{}container\textgreater{}} para un
+  contenedor
+\item
+  \texttt{docker\ rm\ \textless{}container\textgreater{}} elimina un
+  contenedor
+\item
+  \texttt{docker\ rm\ -f\ \textless{}container\textgreater{}} fuerza la
+  eliminación de un contenedor
+\item
+  \texttt{docker\ exec\ -ti\ \textless{}container\textgreater{}\ bash}
+  entra dentro de un contenedor
+\end{itemize}
+
+Comando para detener y borrar todos los contenedores:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ docker\ stop\ \$(sudo\ docker\ ps\ -a\ -q)}
+\item
+  \texttt{\$\ docker\ rm\ \$(sudo\ docker\ ps\ -a\ -q)}
+\end{itemize}
+
+\hypertarget{comandos-de-redes}{%
+\subsection{Comandos de redes}\label{comandos-de-redes}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{docker\ network\ ls} lista las redes que tengo
+\item
+  \texttt{docker\ network\ connect\ \textless{}id\ red\textgreater{}\ \textless{}id\ contenedor\textgreater{}}
+  conecta un contenedor a una red
+\item
+  \texttt{docker\ network\ inspect\ \textless{}id\ red\textgreater{}} da
+  información sobre la red
+\end{itemize}
+
+\hypertarget{comandos-para-manejar-voluxfamenes}{%
+\subsection{Comandos para manejar
+volúmenes}\label{comandos-para-manejar-voluxfamenes}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{docker\ volume\ create\ \textless{}nombre\ al\ volumen\textgreater{}}
+  crea un volumnen
+\item
+  \texttt{docker\ volume\ ls} lista los volúmenes creados
+\item
+  \texttt{docker\ volume\ inspect\ \textless{}volumen\textgreater{}}
+  inspeciona donde está guardado el volumen
+\item
+  \texttt{docker\ run\ -it\ -v\ \textless{}volumen\textgreater{}:\textless{}punto\ montaje\ en\ el\ contenedor\textgreater{}\ ubuntu:latest}
+  arrancar ubuntu enlazando con el volumen creado
+\item
+  \texttt{docker\ volume\ rm\ \textless{}volumen\textgreater{}} elimina
+  un volumen
+\item
+  \texttt{docker\ volume\ prune} elimina todos los volúmenes que no
+  están siendo usados por ningún contenedor
+\end{itemize}
+
+En el curso borré 25 GB de volúmenes.
+
+\hypertarget{construcciuxf3n-de-imuxe1genes-con-dockerfile}{%
+\section{Construcción de imágenes con
+Dockerfile}\label{construcciuxf3n-de-imuxe1genes-con-dockerfile}}
+
+\hypertarget{comando-para-construir-una-imagen-con-un-dockerfile}{%
+\subsection{Comando para construir una imagen con un
+Dockerfile}\label{comando-para-construir-una-imagen-con-un-dockerfile}}
+
+Para construir una imagen a partir de un Dockerfile
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ build [OPTIONS] PATH }\KeywordTok{|} \ExtensionTok{URL} \KeywordTok{|} \ExtensionTok{{-}}
+\ExtensionTok{docker}\NormalTok{ build }\AttributeTok{{-}t} \OperatorTok{\textless{}}\NormalTok{nombre para la imagen}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{ruta del Dockerfile}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Si lo ejecutamos de la carperta del Dockerfile se puede pasar un punto
+\texttt{.} para indicar directorio actual.
+
+Para instanciar un contenedor a partir de la imagen creada
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run }\AttributeTok{{-}d} \AttributeTok{{-}{-}name} \OperatorTok{\textless{}}\NormalTok{nombre para el contenedor}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{imagen}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{instrucciones-para-esccribir-un-dockerfile}{%
+\subsection{Instrucciones para esccribir un
+Dockerfile}\label{instrucciones-para-esccribir-un-dockerfile}}
+
+Sintaxis utilizada en un Dockerfile. El formato es el siguiente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comment}
+\NormalTok{INSTRUCTION arguments}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{instrucciones-buxe1sicas}{%
+\subsubsection{Instrucciones básicas}\label{instrucciones-buxe1sicas}}
+
+\begin{itemize}
+\item
+  \texttt{FROM\ \textless{}image:tag\textgreater{}} especifica la imagen
+  base
+\item
+  \texttt{ENV\ \textless{}key\textgreater{}\ \textless{}value\textgreater{}}
+  establece una variable de entorno persistente
+\item
+  \texttt{ARG} define una variable usable en el resto del Dockerfile con
+  la sintaxis \texttt{\$\{NOMBRE\_DEL\_ARG\}}
+\item
+  \texttt{COPY} copia archivos y directorios al contenedor
+\item
+  \texttt{ADD} idem anterior y además puede descomprimir archivos
+  \texttt{.tar} y \texttt{añadir\ archivos\ vía\ URL}
+\item
+  \texttt{WORKDIR} indica el directorio sobre el que se van a aplicar
+  las instrucciones siguientes
+\end{itemize}
+
+\hypertarget{ejecuciuxf3n-de-comandos-y-punto-de-entrada}{%
+\subsubsection{Ejecución de comandos y punto de
+entrada}\label{ejecuciuxf3n-de-comandos-y-punto-de-entrada}}
+
+El Entrypoint de Docker define el comando a ejecutar por defecto cuando
+se inicia el contenedor a partir de su imagen. Docker tiene por defecto
+el Entrypoint \texttt{/bin/sh\ -c} pero este se puede sobrescribir con
+la instrucción ENTRYPOINT.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ENTRYPOINT} indica el ejecutable que utilizará el contenedor
+  cuando se inicia
+\item
+  \texttt{CMD} indica los argumentos que se pasan al ejecutable del
+  ENTRYPOINT
+\end{itemize}
+
+\textbf{¡Inportante!} Cuando iniciamos un contenedor, podemos indicar
+una lista de argumentos que le queremos proporcionar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{docker}\NormalTok{ run }\OperatorTok{\textless{}}\NormalTok{image}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{arg1}\OperatorTok{\textgreater{}} \OperatorTok{\textless{}}\NormalTok{arg2}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Los argumentos que usemos sobrescribirán el valor de \texttt{CMD} en
+caso de haberlo y serán ejecutados junto con el comando del
+\texttt{ENTRYPOINT}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{RUN} ejecuta una instrucción y crea una imagen (instalar
+  paquetes en el contenedor)
+\end{itemize}
+
+\hypertarget{configurar-entrypont-del-contenedor}{%
+\subsubsection{Configurar entrypont del
+contenedor}\label{configurar-entrypont-del-contenedor}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{EXPOSE} indica que puerto del contenedor se debe exponer al
+  ejecutarlo (no lo expone directamente)
+\item
+  \texttt{LABEL} para aportar meta-datos a la imagen
+\item
+  \texttt{VOLUME} crea un directorio sobre el que se va a montar un
+  volumen para persistencia de datos
+\item
+  \texttt{USER} establece el usuario que se va a usar cuando se ejecute
+  cualquier operación posterior con RUN, CMD y ENTRYPOINT
+\item
+  \texttt{SHELL} permite especificar el uso de otra terminal como zsh,
+  csh, tcsh, powershell
+\item
+  \texttt{STOPSIGNAL} indica una señal que va a finalizar el contenedor
+\item
+  \texttt{HEALTHCHECK} indica a Docker una manera de testear el
+  contenedor para verificar que sigue funcionando correctamente
+\item
+  \texttt{ONBUILD} cuando la imagen donde se encuentra se use como base
+  de otra imagen, va a actuar de trigger y va a ejecutar el comando que
+  le indiquemos
+\end{itemize}
+
+Ejemplo de un Dockerfile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{FROM}\NormalTok{ centos}
+\ExtensionTok{RUN}\NormalTok{ yum install }\AttributeTok{{-}y}\NormalTok{ java{-}11{-}openjdk{-}devel}
+\ExtensionTok{VOLUME}\NormalTok{ /tmp}
+\ExtensionTok{ADD}\NormalTok{ prueba{-}0.0.1{-}SNAPSHOT.jar app.jar}
+\ExtensionTok{COPY}\NormalTok{ ./holamundo.txt /home/Escritorio/Docker/holamundo.txt}
+\ExtensionTok{RUN}\NormalTok{ sh }\AttributeTok{{-}c} \StringTok{\textquotesingle{}touch /app.jar\textquotesingle{}} 
+\ExtensionTok{EXPOSE}\NormalTok{ 9090}
+\ExtensionTok{ENTRYPOINT}\NormalTok{ [}\StringTok{"java"}\NormalTok{,}\StringTok{"{-}Djava.security.egd=file:/dev/./urandom"}\NormalTok{,}\StringTok{"{-}jar"}\NormalTok{,}\StringTok{"/app.jar"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ejercicios}{%
+\section{Ejercicios}\label{ejercicios}}
+
+\hypertarget{ejercicio-1---contenedor-alpine}{%
+\subsection{Ejercicio 1 - contenedor
+alpine}\label{ejercicio-1---contenedor-alpine}}
+
+Hay contenedores, como el de alpine, en el que las siguiente órdenes no
+funcionan, porque al hacer el run, inmediatamente despúes el contenedor
+se para:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ docker\ pull\ alpine} descarga la imagen
+\item
+  \texttt{\$\ docker\ run\ alpine} crea el contenedor
+\item
+  \texttt{\$\ docker\ exec\ -ti\ \textless{}alpine\ container\textgreater{}}
+  entra dentro del contenedor
+\end{itemize}
+
+Ordenes que si que funcionan en este caso para entrar dentro del
+contenedor:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ docker\ pull\ alpine} descarga la imagen
+\item
+  \texttt{\$\ docker\ run\ -ti\ alpine} crea el contenedor y entramos en
+  él
+\end{itemize}
+
+\hypertarget{ejercicio-2---contenedor-microservicio-rest}{%
+\subsection{Ejercicio 2 - contenedor microservicio
+rest}\label{ejercicio-2---contenedor-microservicio-rest}}
+
+Sintaxis:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ docker\ run\ -p\ puerto:puerto\ -\/-name\ \textless{}establecer\ nombre\ contenedor\textgreater{}\ \textless{}imagen\textgreater{}}
+\end{itemize}
+
+Ejemplo práctico:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ docker\ run\ -p\ 8080:2222\ -\/-name\ juan\_microservicios\ juan22222/microservicios}
+\end{itemize}
+
+\hypertarget{ejercicio-3---contenedor-mysql}{%
+\subsection{Ejercicio 3 - contenedor
+mysql}\label{ejercicio-3---contenedor-mysql}}
+
+Crear un contenedor:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\$\ sudo\ docker\ run\ -\/-name\ \textless{}establecer\ nombre\ contenedor\textgreater{}\ -e\ MYSQL\_ROOT\_PASSWORD=root\ -d\ mysql:latest}
+  descarga la imagen (si no existe) y crea el contenedor
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{-e} introduce una variable de entorno
+  \item
+    Se establece \texttt{root} como contraseña (el usuario también es
+    root)
+  \item
+    \texttt{latest} coge la última version (comprobarlo)
+  \end{itemize}
+\item
+  \texttt{\$\ sudo\ docker\ run\ -\/-name\ test-mysql\ -e\ MYSQL\_ROOT\_PASSWORD=root\ -d\ mysql}
+  también sirve
+\item
+  \texttt{\$\ sudo\ docker\ exec\ -ti\ \textless{}container\textgreater{}\ bash}
+  entra dentro del contenedor
+\end{itemize}
+
+NOTA. En caso de que no usemos el usuario root, hay que especificar
+nuevo usuario con las variables de entorno \texttt{MYSQL\_USER},
+\texttt{MYSQL\_PASSWORD}, más información en
+\url{https://hub.docker.com/_/mysql}.
+
+Entrar en el contenedor y crear una base de datos:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{SHOW\ DATABASES;} indica las bases de datos que existen
+\item
+  \texttt{USE\ bbdd;} selecciona la base de datos bbdd
+\item
+  \texttt{SHOW\ TABLES;} muestras las tablas de la base de datos
+  seleccionada
+\item
+  \texttt{CREATE\ TABLE\ despliegues\ (ip\ VARCHAR(45)PRIMARY\ KEY,\ id\_imagen\ VARCHAR(45),\ replicas\ INT);}
+\item
+  \texttt{INSERT\ INTO\ despliegues\ VALUES\ (\textquotesingle{}192.168.1.43\textquotesingle{},\ \textquotesingle{}555zzz555zzz\textquotesingle{},\ 6);}
+\end{itemize}
+
+Crear una imagen a partir del contenedor modificado:
+
+\begin{itemize}
+\tightlist
+\item
+  Parar el contenedor
+\item
+  \texttt{sudo\ docker\ commit\ \textless{}container\ id\textgreater{}\ \textless{}establecer\ un\ nombre\ de\ imagen\textgreater{}}
+  para crear una imagen propia (local) a partir del contenedor
+\item
+  Crear un repositorio en dockerhub de nombre
+  \texttt{curso-lucatic-sql-roberto}
+\item
+  \texttt{sudo\ docker\ login} para loguearse en la terminal
+\item
+  \texttt{sudo\ docker\ tag\ \textless{}imagen\textgreater{}\ rhonegro/curso-lucatic-sql-roberto:0.0.1}
+  para crear la imagen
+\item
+  \texttt{sudo\ docker\ tag\ \textless{}imagen\textgreater{}\ rhonegro/\textless{}image\_name\textgreater{}:\textless{}tag\_name\textgreater{}}
+  sigue la convención de nombres
+\item
+  \texttt{docker\ push\ rhonegro/curso-lucatic-sql-roberto:0.0.1} para
+  subir la imagen al repositorio
+\end{itemize}
+
+Volver a repetir los pasos anteriores:
+
+\begin{itemize}
+\tightlist
+\item
+  Puedo eliminar el contendor pero no puedo eliminar la imagen de mysql
+  (porque existe mi imagen, que depende de ella)
+\item
+  Crear otro contenedor a partir de la imagen de \texttt{mysql}, crear
+  bbdd y parar contenedor.
+\item
+  Parar el contenedor
+\item
+  \texttt{sudo\ docker\ commit\ \textless{}container\ id\textgreater{}\ \textless{}establecer\ un\ nombre\ de\ imagen\textgreater{}}
+  para crear una imagen propia a partir del contenedor GUARDA IMAGEN
+  PRIMITIVA (hay que meter un volumen para que funcione)
+\item
+  Crear un repositorio en dockerhub de nombre
+  \texttt{curso-lucatic-sql-roberto}
+\item
+  \texttt{sudo\ docker\ login} para loguearse en la terminal
+\item
+  \texttt{sudo\ docker\ tag\ \textless{}imagen\textgreater{}\ rhonegro/curso-lucatic-sql-roberto:0.0.1}
+  para crear la imagen
+\item
+  \texttt{sudo\ docker\ push\ rhonegro/curso-lucatic-sql-roberto:0.0.1}
+  para subir la imagen al repositorio
+\end{itemize}
+
+Borrar un repositorio local y descargar el que he borrado desde
+dockerhub:
+
+\begin{itemize}
+\tightlist
+\item
+  Borrar imagen (tuvo que ser forzosa)
+\item
+  \texttt{sudo\ docker\ run\ -\/-name\ mysql-test-03\ -e\ MYSQL\_ROOT\_PASSWORD=root\ -d\ rhonegro/curso-lucatic-sql-roberto:0.0.1}
+  decarga imagen y crea contenedor
+\end{itemize}
+
+EN EL CURSO, NO NOS HA FUNCIONADO
+
+\begin{itemize}
+\tightlist
+\item
+  La imagen propia creada que hemos subido a dockerhub no ha subido las
+  modificaciones de las bases de datos. Al hacer el commit local, coge
+  la imagen original
+\end{itemize}
+
+\hypertarget{crear-una-imagen-docker}{%
+\section{Crear una imagen docker}\label{crear-una-imagen-docker}}
+
+We could create our own Docker image in two ways:
+
+\hypertarget{using-dockerfile-to-create-an-image}{%
+\subsection{Using Dockerfile to Create an
+Image}\label{using-dockerfile-to-create-an-image}}
+
+A Dockerfile is a simple text document that contains a series of
+commands that Docker uses to build an image. Several commands supported
+in Dockerfile are FROM, CMD, ENTRYPOINT, VOLUME, ENV, and more. A simple
+Dockerfile looks as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{FROM}\NormalTok{ busybox:latest}
+\ExtensionTok{CMD}\NormalTok{ [}\StringTok{"date"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Note: An important point to remember is that this file should be named
+as Dockerfile.
+
+The \texttt{docker\ build} command builds an image from a Dockerfile. To
+build the image from our above Dockerfile, use this command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ docker build }\AttributeTok{{-}t}\NormalTok{ example\_image .}
+\ExtensionTok{Sending}\NormalTok{ build context to Docker daemon  2.048kB}
+\ExtensionTok{Step}\NormalTok{ 1/2 : FROM busybox:latest}
+\ExtensionTok{{-}{-}{-}}\OperatorTok{\textgreater{}}\NormalTok{ db8ee88ad75f}
+\ExtensionTok{Step}\NormalTok{ 2/2 : CMD [}\StringTok{"date"}\NormalTok{]}
+\ExtensionTok{{-}{-}{-}}\OperatorTok{\textgreater{}}\NormalTok{ Using cache}
+\ExtensionTok{{-}{-}{-}}\OperatorTok{\textgreater{}}\NormalTok{ b89335fdacdf}
+\ExtensionTok{Successfully}\NormalTok{ built b89335fdacdf}
+\ExtensionTok{Successfully}\NormalTok{ tagged example{-}image:latest}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let’s run a container based on our image. You will find that it
+will print out the date as shown below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ docker run }\AttributeTok{{-}it} \AttributeTok{{-}{-}name}\NormalTok{ example\_app example\_image}
+\ExtensionTok{Sun}\NormalTok{ Jul 21 20:52:20 UTC 2019}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{create-an-image-from-a-container}{%
+\subsection{Create an Image from a
+Container}\label{create-an-image-from-a-container}}
+
+Another way to create an image is by pulling a Docker image, creating a
+container from it, and then modifying or making changes in it like
+installing our app in that container. Now, using the
+\texttt{docker\ commit} command, we can create a Docker image from the
+container.
+
+Let’s look at an example of how to create a Docker image from our
+example\_app container:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ docker ps }\AttributeTok{{-}a}
+\ExtensionTok{CONTAINER}\NormalTok{ ID     IMAGE      COMMAND    CREATED               STATUS              NAMES}
+\ExtensionTok{c3df2dd33276}\NormalTok{  example{-}image }\StringTok{"date"}\NormalTok{  5 seconds ago   Exited }\ErrorTok{(}\ExtensionTok{0}\KeywordTok{)} \ExtensionTok{4}\NormalTok{ seconds ago  example\_app}
+
+\ExtensionTok{$}\NormalTok{ docker commit example\_app example\_image2:latest}
+\ExtensionTok{sha256:7b48e8355aa7a7ea32d554f26d0bd21f4d069d8526c68f1d098acac9111a9adf}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subir-imagen-a-dockerhub}{%
+\section{Subir imagen a dockerhub}\label{subir-imagen-a-dockerhub}}
+
+To be able to publish our Docker images to Docker Hub, there are some
+steps that we need to follow:
+
+\hypertarget{step-1-sign-up-for-docker-hub}{%
+\subsection{Step 1: Sign Up for Docker
+Hub}\label{step-1-sign-up-for-docker-hub}}
+
+Before we can push our image to Docker Hub, we will first need to have
+an account on Docker Hub. Create an account by visiting this link. The
+signup process is relatively simple.
+
+\hypertarget{step-2-create-a-repository-on-docker-hub}{%
+\subsection{Step 2: Create a Repository on Docker
+Hub}\label{step-2-create-a-repository-on-docker-hub}}
+
+For uploading our image to Docker Hub, we first need to create a
+repository. To create a repo:
+
+\begin{itemize}
+\tightlist
+\item
+  Sign in to Docker Hub
+\item
+  Click on ‘Create Repository’ on the Docker Hub welcome page:
+\item
+  Fill in the repository name as \texttt{example-image}, the Docker
+  image that we created earlier using Dockerfile. Also, describe your
+  repo like “My First Repository”. Finally, click on the create button.
+  Refer to the below screenshot:
+\end{itemize}
+
+\hypertarget{step-3-push-image-to-docker-hub}{%
+\subsection{Step 3: Push Image to Docker
+Hub}\label{step-3-push-image-to-docker-hub}}
+
+Now we will push our built image to the Docker Hub registry:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Log into the Docker public registry from your local machine terminal
+  using Docker CLI:
+\end{enumerate}
+
+\texttt{\$\ docker\ login}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Tag the image
+\end{enumerate}
+
+This is a crucial step that is required before we can upload our image
+to the repository. As we discussed earlier, Docker follows the naming
+convention to identify unofficial images. What we are creating is an
+unofficial image. Hence, it should follow that syntax. According to that
+naming convention, the unofficial image name should be named as follows:
+\texttt{\textless{}username\textgreater{}/\textless{}image\_name\textgreater{}:\textless{}tag\_name\textgreater{}}.
+In my case, I need to rename it as gauravvv/example\_image:latest
+
+\texttt{\$\ docker\ tag\ example\_image:latest\ gauravvv/example\_image:latest}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Publish the image
+\end{enumerate}
+
+\texttt{\$\ docker\ push\ gauravvv/example\_image:latest}
+
+Upload your tagged image to the repository using the docker push
+command. Once complete, you can see the image there on Docker Hub.
+That’s it; you have successfully published your Docker image. If you
+want to test out your image, use the below command and launch a
+container from it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ docker pull gauravvv/example\_image:latest}
+\ExtensionTok{$}\NormalTok{ docker run }\AttributeTok{{-}it}\NormalTok{ gauravvv/example\_image:latest}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dockerfile}{%
+\section{Dockerfile}\label{dockerfile}}
+
+Ejemplo de un Dockerfile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# imagen base}
+\ExtensionTok{FROM}\NormalTok{ centos}
+
+\CommentTok{\# RUn ejecuta comandos}
+\CommentTok{\# ADD es para añadir ficheros}
+\ExtensionTok{RUN}\NormalTok{ yum install }\AttributeTok{{-}y}\NormalTok{ java{-}11{-}openjdk{-}devel}
+\ExtensionTok{VOLUME}\NormalTok{ /tmp}
+\ExtensionTok{ADD}\NormalTok{ prueba{-}0.0.1{-}SNAPSHOT.jar app.jar}
+
+\CommentTok{\# RUN y ENTRYPOINT ejecutan cuando arranca el contenedor}
+\CommentTok{\# EXPOSE es para indicar el puerto por el que escucha}
+\ExtensionTok{RUN}\NormalTok{ sh }\AttributeTok{{-}c} \StringTok{\textquotesingle{}touch /app.jar\textquotesingle{}} 
+\ExtensionTok{EXPOSE}\NormalTok{ 9090 puerto por el que escucha}
+\ExtensionTok{ENTRYPOINT}\NormalTok{ [}\StringTok{"java"}\NormalTok{,}\StringTok{"{-}Djava.security.egd=file:/dev/./urandom"}\NormalTok{,}\StringTok{"{-}jar"}\NormalTok{,}\StringTok{"/app.jar"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ejercicio-1-mysql}{%
+\subsection{Ejercicio 1: mysql}\label{ejercicio-1-mysql}}
+
+Enlace web:
+https://betterprogramming.pub/customize-your-mysql-database-in-docker-723ffd59d8fb
+
+\hypertarget{paso-1-preparaciuxf3n-de-archivos}{%
+\subsubsection{Paso 1: Preparación de
+archivos}\label{paso-1-preparaciuxf3n-de-archivos}}
+
+Directorio principal (Ubuntu): \texttt{/home/roberto/docker\_lucatic}
+
+Archivo \texttt{./Dockerfile}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# la imagen base es mysql}
+\CommentTok{\# MYSQL\_DATABASE es una variable de entorno}
+\CommentTok{\# creamos la bbdd biblioteca}
+\ExtensionTok{FROM}\NormalTok{ mysql}
+\ExtensionTok{ENV}\NormalTok{ MYSQL\_DATABASE biblioteca}
+
+\CommentTok{\# copiar un script al contenedor}
+\CommentTok{\# carpeta origen {-}{-}\textgreater{} carpeta destino contenedor}
+\ExtensionTok{COPY}\NormalTok{ ./sql{-}script/ /docker{-}entrypoint{-}initdb.d/}
+\end{Highlighting}
+\end{Shaded}
+
+Archivo \texttt{/sql-script/createtable.sql}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{USE}\NormalTok{ biblioteca;}
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ libros(id\_libro }\DataTypeTok{INT} \KeywordTok{PRIMARY} \KeywordTok{KEY}\NormalTok{, autor }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{45}\NormalTok{));}
+
+\KeywordTok{INSERT} \KeywordTok{INTO}\NormalTok{ libros }\KeywordTok{VALUES}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{\textquotesingle{}marta\textquotesingle{}}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+Archivo alternativo (no probado):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ biblioteca.libros(id\_libro }\DataTypeTok{INT} \KeywordTok{PRIMARY} \KeywordTok{KEY}\NormalTok{, autor }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{45}\NormalTok{));}
+
+\KeywordTok{INSERT} \KeywordTok{INTO}\NormalTok{ biblioteca.libros }\KeywordTok{VALUES}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{\textquotesingle{}marta\textquotesingle{}}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{paso-2-ejecuciuxf3n-de-comandos}{%
+\subsubsection{Paso 2: Ejecución de
+comandos}\label{paso-2-ejecuciuxf3n-de-comandos}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Crear la imagen
+\end{enumerate}
+
+Ejecutar desde el directorio del Dockerfile:
+
+\texttt{\$\ sudo\ docker\ build\ -t\ mysql-dockerfile-image-2\ .}
+
+el espacio-punto es necesario.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Crear el contenedor
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ sudo docker run }\AttributeTok{{-}d} \AttributeTok{{-}{-}name}\NormalTok{ prueba{-}mysql }\AttributeTok{{-}e}\NormalTok{ MYSQL\_ROOT\_PASSWORD=1234 }\OperatorTok{\textless{}}\NormalTok{imagen}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Entrar en el contenedor, entrar en mysql y comprobar que se ha creado
+  la tabla.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ sudo docker exec }\AttributeTok{{-}ti} \OperatorTok{\textless{}}\NormalTok{contenedor}\OperatorTok{\textgreater{}}\NormalTok{ bash}
+\end{Highlighting}
+\end{Shaded}
+
+Dentro del contenedor:
+
+\begin{verbatim}
+/# mysql -u root -p
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mysql}\OperatorTok{\textgreater{}}\NormalTok{ show databases;}
+\NormalTok{mysql}\OperatorTok{\textgreater{}} \KeywordTok{use}\NormalTok{ biblioteca;}
+\NormalTok{mysql}\OperatorTok{\textgreater{}}\NormalTok{ show }\KeywordTok{tables}\NormalTok{;}
+\NormalTok{mysql}\OperatorTok{\textgreater{}} \KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ libros;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{docker-compose}{%
+\section{Docker-compose}\label{docker-compose}}
+
+\hypertarget{ejecutar-junto-a-un-dockerfile}{%
+\subsection{Ejecutar junto a un
+Dockerfile}\label{ejecutar-junto-a-un-dockerfile}}
+
+Archivo \texttt{Dockerfile}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{FROM}\NormalTok{ rhonegro/prueba{-}mysql{-}image:0.0.1}
+
+\CommentTok{\# copiar un script al contenedor}
+\CommentTok{\# carpeta origen {-}{-}\textgreater{} carpeta destino contenedor}
+\ExtensionTok{COPY}\NormalTok{ ./sql{-}script/ /docker{-}entrypoint{-}initdb.d/}
+\end{Highlighting}
+\end{Shaded}
+
+Archivo \texttt{docker-compose.yml}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# file: docker{-}compose.yml}
+\CommentTok{\# ejecutar en terminal: docker{-}compose up {-}d}
+\CommentTok{\# Use root/root as user/password credentials}
+\ExtensionTok{version:} \StringTok{\textquotesingle{}2\textquotesingle{}}
+\ExtensionTok{services:}
+  \CommentTok{\# \textquotesingle{}testsql\textquotesingle{} será parte del nombre del contenedor}
+  \ExtensionTok{testsql:}
+    \CommentTok{\# le indico donde está el Dockerfile (directorio actual)}
+    \ExtensionTok{build:}\NormalTok{ .}
+    \ExtensionTok{ports:}
+      \ExtensionTok{{-}}\NormalTok{ 3306:3306}
+    \CommentTok{\# variables de entorno}
+    \ExtensionTok{environment:}
+      \ExtensionTok{MYSQL\_ROOT\_PASSWORD:}\NormalTok{ root}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ejecutar-solo}{%
+\subsection{Ejecutar solo}\label{ejecutar-solo}}
+
+Archivo \texttt{docker-compose.yml}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# file: docker{-}compose.yml}
+\CommentTok{\# ejecutar en terminal: docker{-}compose up {-}d}
+\CommentTok{\# Use root/root as user/password credentials}
+\ExtensionTok{version:} \StringTok{\textquotesingle{}2\textquotesingle{}}
+\ExtensionTok{services:}
+  \CommentTok{\# \textquotesingle{}testsql\textquotesingle{} será parte del nombre del contenedor}
+  \ExtensionTok{testsql:}
+    \CommentTok{\# le indico la imagen}
+    \ExtensionTok{image:}\NormalTok{ mysql}
+    \CommentTok{\# cambiamos el primer puerto si entra en conflicto con o}
+    \ExtensionTok{ports:}
+      \ExtensionTok{{-}}\NormalTok{ 3307:3306}
+    \CommentTok{\# variables de entorno}
+    \ExtensionTok{environment:}
+      \ExtensionTok{MYSQL\_ROOT\_PASSWORD:}\NormalTok{ root}
+\end{Highlighting}
+\end{Shaded}
+
+Comandos útiles:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sudo\ docker-compose\ up\ -d} crear los contenedores (y los
+  arranca en segundo plano)
+\item
+  \texttt{sudo\ docker-compose\ down} elimina los contenedores generados
+  con el docker-compose
+\end{itemize}
+
+\hypertarget{pull-indicando-puertos}{%
+\section{Pull indicando puertos}\label{pull-indicando-puertos}}
+
+\texttt{sudo\ docker\ run\ -p\ 3306:3306\ -\/-name\ test-ports\ -e\ MYSQL\_ROOT\_PASSWORD=root\ -d\ rhonegro/prueba-mysql-image:0.0.1}
+
+\hypertarget{section}{%
+\section{01/04/2022}\label{section}}
+
+\hypertarget{ejercicio-1}{%
+\subsection{Ejercicio 1}\label{ejercicio-1}}
+
+Crear y entrar en un contenedor ubuntu utilizando un Dockerfile. En el
+Dockerfile hay que crear una carpeta de ubuntu con el nombre roberto (en
+el directorio raíz)
+
+Dockerfile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# la imagen base es ubuntu}
+\ExtensionTok{FROM}\NormalTok{ ubuntu}
+
+\CommentTok{\# crear una carpeta con mi nombre}
+\ExtensionTok{RUN}\NormalTok{ mkdir roberto}
+\end{Highlighting}
+\end{Shaded}
+
+NOTA. Para entrar dentro de algunos contenedores, solo se puede hacer
+cuando hacemos el run de la imagen.
+
+Comandos en terminal:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sudo\ docker\ build\ -t\ ubuntu-image\ .}
+\item
+  \texttt{sudo\ docker\ run\ -ti\ ubuntu-image\ /bin/bash}
+\end{itemize}
+
+\hypertarget{ejercicio-2}{%
+\subsection{Ejercicio 2}\label{ejercicio-2}}
+
+Idem anterior creando y entrando en dos contenedores ubuntu. Comprobar
+que están en la misma red con el comando de docker.
+
+Dentro de un contenedor ubuntu, detectar en la red el otro contenedor
+con los siguientes comandos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{apt}\NormalTok{ update}
+\ExtensionTok{apt}\NormalTok{ install iputils{-}ping }
+\FunctionTok{ping} \OperatorTok{\textless{}}\NormalTok{ip del otro contenedor de la red}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ejercicio-3}{%
+\subsection{Ejercicio 3}\label{ejercicio-3}}
+
+Se pouede entrar en ubuntu de la menera normal
+
+\texttt{sudo\ docker\ inspect\ -f\ \textquotesingle{}\{\{range.NetworkSettings.Networks\}\}\{\{.IPAddress\}\}\{\{end\}\}\textquotesingle{}\ \textless{}ID\ CONTENEDOR\textgreater{}}
+para que me de la id del contendor crear alias –\textgreater{}
+inspect\_ip
+
+\hypertarget{redes}{%
+\section{Redes}\label{redes}}
+
+\hypertarget{section-1}{%
+\section{04/04/2022}\label{section-1}}
+
+\hypertarget{docker-y-servicio-rest}{%
+\section{Docker y servicio rest}\label{docker-y-servicio-rest}}
+
+\begin{itemize}
+\tightlist
+\item
+  Creo aplicación
+\item
+  Dockerizo la aplicación –\textgreater{} imágenes
+\item
+  Arranco contendor con
+  \texttt{sudo\ docker\ run\ -p\ \textless{}establezco\ puerto\textgreater{}:\textless{}puerto\textgreater{}\ -d\ \textless{}imagen\textgreater{}}
+\end{itemize}
+
+\hypertarget{section-2}{%
+\section{05/04/2022}\label{section-2}}
+
+\hypertarget{docker-y-servicio-rest-1}{%
+\section{Docker y servicio rest}\label{docker-y-servicio-rest-1}}
+
+\hypertarget{construcciuxf3n-del-archivo-.jar-desde-eclipse}{%
+\subsection{Construcción del archivo .jar desde
+Eclipse}\label{construcciuxf3n-del-archivo-.jar-desde-eclipse}}
+
+\hypertarget{construcciuxf3n-del-archivo-.jar-desde-cli}{%
+\subsection{Construcción del archivo .jar desde
+CLI}\label{construcciuxf3n-del-archivo-.jar-desde-cli}}
+
+\hypertarget{construcciuxf3n-del-archivo-.jar-indicando-un-nombre-de-archivo-personalizado}{%
+\subsection{Construcción del archivo .jar indicando un nombre de archivo
+personalizado}\label{construcciuxf3n-del-archivo-.jar-indicando-un-nombre-de-archivo-personalizado}}
+
+Para indicar el nombre al archivo .jar que creamos desde Eclipse, hay
+que añadir la línea
+\texttt{\textless{}finalName\textgreater{}microservicio\_deployment\textless{}/finalName\textgreater{}}
+en el archivo pom. Se indica en el siguiente fragmento de código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    \textless{}build\textgreater{}}
+\NormalTok{        \textless{}plugins\textgreater{}}
+\NormalTok{            \textless{}plugin\textgreater{}}
+\NormalTok{                \textless{}groupId\textgreater{}org.springframework.boot\textless{}/groupId\textgreater{}}
+\NormalTok{                \textless{}artifactId\textgreater{}spring{-}boot{-}maven{-}plugin\textless{}/artifactId\textgreater{}}
+\NormalTok{            \textless{}/plugin\textgreater{}}
+\NormalTok{        \textless{}/plugins\textgreater{}}
+\NormalTok{        \textless{}finalName\textgreater{}microservicio\_deployment\textless{}/finalName\textgreater{}}
+\NormalTok{    \textless{}/build\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dockerizar-el-servicio-rest---opciuxf3n-1}{%
+\subsection{Dockerizar el servicio rest - Opción
+1}\label{dockerizar-el-servicio-rest---opciuxf3n-1}}
+
+Pasos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lanzar contenedores con las bbdd de productivo, evolutivo, desarrollo
+\item
+  Cambiar properties del servicio rest en Eclipse
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Se pone la ip del contenedor de la bbdd de desarrollo:
+  \texttt{172.25.0.4}
+\item
+  Se pone el puerto de mysql: \texttt{3306}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server.port=3320}
+\NormalTok{spring.datasource.url= jdbc:mysql://172.25.0.4:3306/curso?allowPublicKeyRetrieval=true\&useSSL=false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Generar el .jar desde eclipse
+\item
+  Construir la imagen
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ docker build }\AttributeTok{{-}t}\NormalTok{ webapp .}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Levantar el contenedor
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ docker run }\AttributeTok{{-}p}\NormalTok{ 3320:3320 }\AttributeTok{{-}{-}name}\NormalTok{ webapp\_1 webapp}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dockerizar-el-servicio-rest---opciuxf3n-2}{%
+\subsection{Dockerizar el servicio rest - Opción
+2}\label{dockerizar-el-servicio-rest---opciuxf3n-2}}
+
+Pasos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lanzar contenedores con las bbdd de productivo, evolutivo, desarrollo
+\item
+  Cambiar properties del servicio rest en Eclipse
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Se pone la ip indicada en el docker-compose: \texttt{192.168.0.3}
+\item
+  Se pone el puerto de mysql: \texttt{3306}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server.port=3320}
+\NormalTok{spring.datasource.url= jdbc:mysql://192.168.0.3:3306/curso?allowPublicKeyRetrieval=true\&useSSL=false}
+\NormalTok{spring.datasource.username=root}
+\NormalTok{spring.datasource.password=root}
+\NormalTok{spring.datasource.driver{-}class{-}name =com.mysql.cj.jdbc.Driver}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Generar el .jar desde eclipse
+\item
+  Construir la imagen
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ docker build }\AttributeTok{{-}t}\NormalTok{ webapp .}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Levantar el contenedor
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ docker run }\AttributeTok{{-}p}\NormalTok{ 3320:3320 }\AttributeTok{{-}{-}name}\NormalTok{ webapp\_1 webapp}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# file: docker-compose.yml
+# ejecutar en terminal: sudo docker-compose up -d
+version: '3'
+
+services:
+
+  rest:
+    build: .
+    ports:
+      - "3320:3320"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: on-failure
+    command: ["sleep", "infinity"]
+    networks:
+      lan:
+        ipv4_address: "192.168.0.2"
+
+  bbdd:
+    image: victoria1991/victoriasql:v1
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      lan:
+        ipv4_address: "192.168.0.3"
+        
+networks:
+    lan:
+       driver: bridge
+       driver_opts:
+           parent: eth0
+       ipam:
+           driver: default
+           config:
+               - subnet: "192.168.0.0/24"
+                 gateway: "192.168.0.1"
+\end{verbatim}
+
+\hypertarget{section-3}{%
+\section{06/04/2022}\label{section-3}}
+
+\hypertarget{otro-muxe9todo-apra-dockerizar}{%
+\section{Otro método apra
+dockerizar}\label{otro-muxe9todo-apra-dockerizar}}
+
+NOTA. Este método lo van a aliminar
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server.port=9999}
+\NormalTok{spring.datasource.url= jdbc:mysql://alias:3306/curso?allowPublicKeyRetrieval=true\&useSSL=false}
+\NormalTok{spring.datasource.username=root}
+\NormalTok{spring.datasource.password=root}
+\NormalTok{spring.datasource.driver{-}class{-}name =com.mysql.cj.jdbc.Driver}
+\end{Highlighting}
+\end{Shaded}
+
+Comandos:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sudo\ docker\ build\ -t\ \textless{}imagen\ de\ mysql\textgreater{}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\NormalTok{ sudo docker run }\AttributeTok{{-}d} \AttributeTok{{-}p}\NormalTok{ 3306:3306 }\AttributeTok{{-}{-}name}\NormalTok{ mysql }\AttributeTok{{-}e}\NormalTok{ MYSQL\_ROOT\_PASSWORD=root }\OperatorTok{\textless{}}\NormalTok{imagen\_1}\OperatorTok{\textgreater{}}\KeywordTok{\textasciigrave{}}
+\ExtensionTok{$}\NormalTok{ sudo docker run }\AttributeTok{{-}p}\NormalTok{ 9999:9999 }\AttributeTok{{-}{-}name} \OperatorTok{\textless{}}\NormalTok{establer nombre contenedor}\OperatorTok{\textgreater{}}\NormalTok{ {-}{-}link }\OperatorTok{\textless{}}\NormalTok{contenedor}\OperatorTok{\textgreater{}}\NormalTok{:alias }\OperatorTok{\textless{}}\NormalTok{imagen}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Mi ejemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server.port=9999}
+\NormalTok{spring.datasource.url= jdbc:mysql://prueba:3306/curso?allowPublicKeyRetrieval=true\&useSSL=false}
+\NormalTok{spring.datasource.username=root}
+\NormalTok{spring.datasource.password=root}
+\NormalTok{spring.dat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sudo\ docker\ build\ -t\ prueba\ .}
+\item
+  \texttt{docker\ run\ -d\ -p\ 3306:3306\ -\/-name\ mysql\ -e\ MYSQL\_ROOT\_PASSWORD=root\ a347fc9dd762}
+\item
+  \texttt{sudo\ docker\ run\ -d\ -p\ 3306:3306\ -\/-name\ mysql\ -e\ MYSQL\_ROOT\_PASSWORD=root\ a347fc9dd762}
+\item
+  \texttt{sudo\ docker\ run\ -p\ 9999:9999\ -\/-name\ rest\ -\/-link\ mysql:prueba\ prueba}
+\end{itemize}
+
+\hypertarget{otro-muxe9todo-apra-dockerizar-1}{%
+\section{Otro método apra
+dockerizar}\label{otro-muxe9todo-apra-dockerizar-1}}
+
+En el docker-compose
+
+\end{document}

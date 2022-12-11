@@ -1,8 +1,8 @@
 ---
-title: "Título: insertar título"
-subtitle: "Subtítulo"
-author: Nombre Apellidos
-date: Insertar Fecha
+title: "Docker for absolute beginners"
+#subtitle: "Subtítulo"
+author: Roberto Negro
+date: 11 de diciembre de 2022
 lang: es-ES
 numbersections: true
 toc: true
