@@ -1,0 +1,4 @@
+*.sh
+*.pdf
+# Ignorar carpetas temporales
+tmp.*

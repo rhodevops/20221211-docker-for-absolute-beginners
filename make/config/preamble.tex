@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definición de colores para usar en el
+%% metadata.yaml y en este documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{INLINECODECOLOR1}{HTML}{BDDBE2 } %azul gris
+\definecolor{URLCOLOR1}{HTML}{CD5C5C} %rojo salmon
+\definecolor{TOCCOLOR1}{HTML}{29282A}
+\definecolor{TOCCOLOR2}{HTML}{FF4500} %rojo naranja
+\definecolor{INLINECODECOLOR2}{HTML}{FFE4B5} %amarillo Moccasin
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Resaltado del código en linea
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[most]{tcolorbox}
+
+%%\colorlet{LightLavender}{Lavender!40!}
+\tcbset{on line, 
+        boxsep=0pt, left=0.7pt,right=0pt,top=0pt,bottom=0pt,
+        colframe=white,colback=INLINECODECOLOR1,  
+        highlight math style={enhanced}
+        }
+
+% Guardamos la definición original para que nuestra definición no sea recursiva
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{
+    \tcbox{\oldtexttt{#1}} 
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Para generar texto de prueba
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Configuración para que las líneas
+%% de bloques de código se corten y 
+%% no ocupen el margen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}

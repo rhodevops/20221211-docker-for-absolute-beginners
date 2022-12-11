@@ -1,0 +1,15 @@
+---
+title: "Título: insertar título"
+subtitle: "Subtítulo"
+author: Nombre Apellidos
+date: Insertar Fecha
+lang: es-ES
+numbersections: true
+toc: true
+toccolor: TOCCOLOR2
+colorlinks: true
+urlcolor: URLCOLOR1
+#linkcolor: blue
+#citecolor: green
+#anchorcolor: green
+---
