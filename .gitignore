@@ -1,4 +1,4 @@
-# ejecutables sh y archivos pdf
+# ejecutables sh, archivos pdf y carpetas temporales del makefile
 *.sh
 *.pdf
 tex2pdf.*
